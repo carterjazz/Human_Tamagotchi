@@ -17,13 +17,11 @@ public class Human
    private int GenderMtFScale { get; set; }
    private int GenderBinaryScale { get; set; }
    
-   private int Swing { get; set; }
-   private int Desire { get; set; }
-
    private string Sex { get; set; }
 
    private Health Health { get; set; }
    private Gender Gender { get; set; }
+   private Sexuality Sexuality { get; set; }
 
    public Human(string name, string hairColour, string eyeColour, string sex)
    {
@@ -39,16 +37,31 @@ public class Human
       GenderBinaryScale = _rng.Next(0, 10) * 10;
       
       Health = new Health();
-      Gender = new Gender(Sex, GenderMtFScale , GenderBinaryScale);
+      Gender = new Gender(Sex, GenderBinaryScale , GenderMtFScale);
+      Sexuality = new Sexuality(GenderMtFScale);
    }
 
    public void Draw()
    {
+      Console.WriteLine($"----------------- {Name}  -------------------");
+      Console.WriteLine("-----------------  STATS  -------------------");
       Console.WriteLine($"Name: {Name}");
       Console.WriteLine($"Age: {Age}");
-      Console.WriteLine();
-      Console.WriteLine(Gender.GetGenderIdentity());
 
+      if (Age >= 16)
+      {
+         Console.WriteLine(Sexuality.GetSexualAttraction());
+         Console.WriteLine(Sexuality.GetRomanticAttraction());
+      }
+
+      Console.WriteLine(Gender.GetGenderIdentity());
+      Console.WriteLine("---------------------------------------------");
+
+   }
+
+   public void setAge(int age)
+   {
+      Age = age;
    }
 
 }
@@ -140,7 +153,7 @@ public class Gender
             }
             else
             {
-               return $"Gender: Non-Binary ({GenderValueX}% Binary))";
+               return $"Gender: Non-Binary ({GenderValueX}% Binary)";
             }
          default:
             return "NULL";
@@ -160,7 +173,7 @@ public class Sexuality
    private int LoveSwing;
    
 
-   public Sexuality(int gender, int desire, int swing)
+   public Sexuality(int gender)
    {
       Gender = gender;
       Lust = _rng.Next(0, 10) * 10;
@@ -169,10 +182,151 @@ public class Sexuality
       LoveSwing = _rng.Next(0, 10) * 10;
    }
 
-   public string GetSexualIdentity()
+   public string GetSexualAttraction()
    {
-      
+      switch (Gender)
+      {
+         case >= 70:
+            if (Lust >= 70 && LustySwing >= 70)
+            {
+               return $"Sexual Attraction: Horny Lesbian ({Lust}% Lust)";
+            } 
+            else if (Lust >= 40 && LustySwing >= 70)
+            {
+               return $"Sexual Attraction: Lesbian ({Lust}% Lust)";
+            }
+            else if (Lust >= 70 && LustySwing <= 30)
+            {
+               return $"Sexual Attraction: Horny Straight ({Lust}% Lust)";
+            }
+            else if (Lust >= 40 && LustySwing <= 30)
+            {
+               return $"Sexual Attraction: Straight ({Lust}% Lust)";
+            }
+            else if (Lust >= 70)
+            {
+               return $"Sexual Attraction: Horny Bisexual ({Lust}% Lust)";
+            }
+            else if (Lust >= 40)
+            {
+               return $"Sexual Attraction: Bisexual ({Lust}% Lust)";
+            }
+            else if (Lust >= 20)
+            { 
+               return $"Sexual Attraction: Grey-Asexual ({Lust}% Lust)";
+            }
+            else
+            { 
+               return $"Sexual Attraction: Asexual ({Lust}% Lust)";
+            }
+         case <= 30:
+            if (Lust >= 70 && LustySwing >= 70)
+            {
+               return $"Sexual Attraction: Horny Straight ({Lust}% Lust)";
+            } 
+            else if (Lust >= 40 && LustySwing >= 70)
+            {
+               return $"Sexual Attraction: Straight ({Lust}% Lust)";
+            }
+            else if (Lust >= 70 && LustySwing <= 30)
+            {
+               return $"Sexual Attraction: Horny Gay ({Lust}% Lust)";
+            }
+            else if (Lust >= 40 && LustySwing <= 30)
+            {
+               return $"Sexual Attraction: Gay ({Lust}% Lust)";
+            }
+            else if (Lust >= 70)
+            {
+               return $"Sexual Attraction: Horny Bisexual ({Lust}% Lust)";
+            }
+            else if (Lust >= 40)
+            {
+               return $"Sexual Attraction: Bisexual ({Lust}% Lust)";
+            }
+            else if (Lust >= 20)
+            { 
+               return $"Sexual Attraction: Grey-Asexual ({Lust}% Lust)";
+            }
+            else
+            { 
+               return $"Sexual Attraction: Asexual ({Lust}% Lust)";
+            }
+         
+         default:
+            if (Lust >= 70 && LustySwing >= 70)
+            {
+               return $"Sexual Attraction: Horny (for The Ladies) ({Lust}% Lust)";
+            } 
+            else if (Lust >= 40 && LustySwing >= 70)
+            {
+               return $"Sexual Attraction: The Ladies ({Lust}% Lust)";
+            }
+            else if (Lust >= 70 && LustySwing <= 30)
+            {
+               return $"Sexual Attraction: Horny (The Gentlemen) ({Lust}% Lust)";
+            }
+            else if (Lust >= 40 && LustySwing <= 30)
+            {
+               return $"Sexual Attraction: The Gentlemen ({Lust}% Lust)";
+            }
+            else if (Lust >= 70)
+            {
+               return $"Sexual Attraction: Horny Bisexual ({Lust}% Lust)";
+            }
+            else if (Lust >= 40)
+            {
+               return $"Sexual Attraction: Bisexual ({Lust}% Lust)";
+            }
+            else if (Lust >= 20)
+            { 
+               return $"Sexual Attraction: Grey-Asexual ({Lust}% Lust)";
+            }
+            else
+            { 
+               return $"Sexual Attraction: Asexual ({Lust}% Lust)";
+            }
+         
+         
+      }
    }
 
+   public string GetRomanticAttraction()
+   {
+      switch (Love)
+      {
+         case >= 70:
+            if (LoveSwing >= 70)
+            {
+               return $"Romantic Attraction: Horny Women Enjoyer";
+            }
+            else if (LoveSwing <= 30)
+            {
+               return $"Romantic Attraction: Horny BoyKisser";
+            }
+            else
+            {
+               return $"Romantic Attraction: Anything That Moves (and can consent)";
+            }
+         case >= 40:
+            if (LoveSwing >= 70)
+            {
+               return $"Romantic Attraction: Women Enjoyer";
+            }
+            else if (LoveSwing <= 30)
+            {
+               return $"Romantic Attraction: BoyKisser";
+            }
+            else
+            {
+               return $"Romantic Attraction: All of the Above";
+            }
+         case >= 20:
+            return $"Romantic Attraction: Greyromantic ";
+         default:
+            return "Romantic Attraction: Aromantic";
+      }
+   }
+   
 }
 
