@@ -1,0 +1,14 @@
+/home/charli/RiderProjects/Human_Tamogachi/Human_Tamogachi/obj/Debug/net9.0/Human_Tamogachi.GeneratedMSBuildEditorConfig.editorconfig
+/home/charli/RiderProjects/Human_Tamogachi/Human_Tamogachi/obj/Debug/net9.0/Human_Tamogachi.AssemblyInfoInputs.cache
+/home/charli/RiderProjects/Human_Tamogachi/Human_Tamogachi/obj/Debug/net9.0/Human_Tamogachi.AssemblyInfo.cs
+/home/charli/RiderProjects/Human_Tamogachi/Human_Tamogachi/obj/Debug/net9.0/Human_Tamogachi.csproj.CoreCompileInputs.cache
+/home/charli/RiderProjects/Human_Tamogachi/Human_Tamogachi/obj/Debug/net9.0/Human_Tamogachi.genruntimeconfig.cache
+/home/charli/RiderProjects/Human_Tamogachi/Human_Tamogachi/bin/Debug/net9.0/Human_Tamagotchi
+/home/charli/RiderProjects/Human_Tamogachi/Human_Tamogachi/bin/Debug/net9.0/Human_Tamagotchi.deps.json
+/home/charli/RiderProjects/Human_Tamogachi/Human_Tamogachi/bin/Debug/net9.0/Human_Tamagotchi.runtimeconfig.json
+/home/charli/RiderProjects/Human_Tamogachi/Human_Tamogachi/bin/Debug/net9.0/Human_Tamagotchi.dll
+/home/charli/RiderProjects/Human_Tamogachi/Human_Tamogachi/bin/Debug/net9.0/Human_Tamagotchi.pdb
+/home/charli/RiderProjects/Human_Tamogachi/Human_Tamogachi/obj/Debug/net9.0/Human_Tamagotchi.dll
+/home/charli/RiderProjects/Human_Tamogachi/Human_Tamogachi/obj/Debug/net9.0/refint/Human_Tamagotchi.dll
+/home/charli/RiderProjects/Human_Tamogachi/Human_Tamogachi/obj/Debug/net9.0/Human_Tamagotchi.pdb
+/home/charli/RiderProjects/Human_Tamogachi/Human_Tamogachi/obj/Debug/net9.0/ref/Human_Tamagotchi.dll
