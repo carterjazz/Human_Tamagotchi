@@ -18,10 +18,12 @@ public class Human
    private string Sex { get; set; }
 
    private bool isLGBT;
+   private bool HasLunchBox;
 
    private Health Health { get; set; }
    private Gender Gender { get; set; }
    private Sexuality Sexuality { get; set; }
+   private Inventory Inventory { get; set; }
 
    public Human(string name)
    {
@@ -34,6 +36,7 @@ public class Human
       Radicalisation = _rng.Next(0, 10) * 10;
       GenderMtFScale = _rng.Next(0, 10) * 10;
       GenderBinaryScale = _rng.Next(0, 10) * 10;
+      HasLunchBox = false;
 
       if (_rng.Next(0, 60) == 1)
       {
@@ -56,12 +59,12 @@ public class Human
       Health = new Health();
       Gender = new Gender(Sex, GenderBinaryScale , GenderMtFScale, isLGBT);
       Sexuality = new Sexuality(GenderMtFScale, isLGBT);
+      Inventory = new Inventory();
    }
 
    public void DrawStats()
    {
       Console.Clear();
-      Console.WriteLine($"----------------- {Name}  -------------------");
       Console.WriteLine("-----------------  STATS  -------------------");
       Console.WriteLine($"Name: {Name}");
       Console.WriteLine($"Age: {Age}");
@@ -73,11 +76,14 @@ public class Human
       }
 
       Console.WriteLine(Gender.GetGenderIdentity());
-      Console.WriteLine("---------------------------------------------");
-      Console.WriteLine("HEALTH(H)");
+     
 
    }
 
+   public Health GetHealth()
+   {
+      return Health;
+   }
    public void DrawHealth()
    {
       Console.Clear();
@@ -94,6 +100,22 @@ public class Human
    public bool IsLGBTGet()
    {
       return isLGBT;
+   }
+
+   public void AddFood(Food food)
+   {
+      Inventory.StoreFood(food, HasLunchBox);
+   }
+
+   public void setLunchBox(bool hasLunchBox)
+   {
+      HasLunchBox = hasLunchBox;
+   }
+
+   public void DrawInventory()
+   {
+      Console.Clear();
+      Inventory.Draw();
    }
 
 }

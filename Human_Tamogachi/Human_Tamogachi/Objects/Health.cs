@@ -37,6 +37,18 @@ public class Health
             break;
       }
    }
+   
+   public void Draw(string name)
+   {
+      Console.WriteLine("-----------------  HEALTH  -------------------");
+      Console.WriteLine($"Health : {HealthPoints}");
+      Console.WriteLine($"Happiness : {Happiness}");
+      Console.WriteLine($"Hunger : {Hunger}");
+      Console.WriteLine($"Munch Meter: {MunchMeter}");
+      Console.WriteLine($"Insanity : {Insanity}");
+      Console.WriteLine($"Addiction: {Addiction}");
+      
+   }
 
    public string GetMentalState()
    {
@@ -55,7 +67,7 @@ public class Health
       }
    }
 
-   public void Ate(int foodValue)
+   public void Ate(int foodValue, string foodType)
    {
       if (Hunger + foodValue <= 100)
       {
@@ -66,20 +78,26 @@ public class Health
          Hunger = 100;
          MunchMeter++;
       }
+
+      switch (foodType)
+      {
+         case "Fat":
+            break;
+         case "Carb":
+            break;
+         case "Dairy":
+            break;
+         case "FruitAndVeg":
+            break;
+         case "Protein":
+            break;
+         case "Sugar":
+            break;
+         default:
+            break;
+      }
    }
 
-   public void Draw(string name)
-   {
-      Console.WriteLine($"----------------- {name}  -------------------");
-      Console.WriteLine("-----------------  HEALTH  -------------------");
-      Console.WriteLine($"Health : {HealthPoints}");
-      Console.WriteLine($"Happiness : {Happiness}");
-      Console.WriteLine($"Hunger : {Hunger}");
-      Console.WriteLine($"Munch Meter: {MunchMeter}");
-      Console.WriteLine($"Insanity : {Insanity}");
-      Console.WriteLine($"Addiction: {Addiction}");
-      Console.WriteLine("----------------------------------------------");
-      Console.WriteLine("STATS(S) | FOOD (F)");
-   }
+  
 
 }

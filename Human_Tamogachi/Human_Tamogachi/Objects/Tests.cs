@@ -2,11 +2,14 @@ namespace Human_Tamagotchi.Objects;
 
 public class Tests
 {
-    private const int RANGE = 1000;
-    private Human[] TestCases = new Human[RANGE];
+    private int RANGE;
+    private Human[] TestCases;
 
-    public Tests()
+    public Tests(int range)
     {
+        RANGE = range;
+        TestCases = new Human[RANGE];
+        
         for (int i = 0; i < RANGE; i++)
         {
             TestCases[i] = new Human("NULL");
