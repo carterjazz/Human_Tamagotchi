@@ -24,6 +24,6 @@ public class Food(string name, string type, int amount, int foodValue)
 
     public string Display()
     {
-        return $"{Name} (Quantity || {Amount}) (Type || {type}) (Value || {foodValue}) ";
+        return $"{Name} (Amt: {Amount}, Val: {FoodValue}, Typ: {Type})";
     }
 }

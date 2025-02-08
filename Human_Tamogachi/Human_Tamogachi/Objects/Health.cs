@@ -38,15 +38,19 @@ public class Health
       }
    }
    
-   public void Draw(string name)
+   public void Draw(int pad, int startPos)
    {
-      Console.WriteLine("-----------------  HEALTH  -------------------");
-      Console.WriteLine($"Health : {HealthPoints}");
-      Console.WriteLine($"Happiness : {Happiness}");
-      Console.WriteLine($"Hunger : {Hunger}");
-      Console.WriteLine($"Munch Meter: {MunchMeter}");
-      Console.WriteLine($"Insanity : {Insanity}");
-      Console.WriteLine($"Addiction: {Addiction}");
+      Console.SetCursorPosition(startPos, 2);
+      Console.WriteLine("||" + new string(' ', pad) + $"Health: {HealthPoints}");
+      Console.SetCursorPosition(startPos, 3);
+      Console.WriteLine("||" + new string(' ',pad) + $"Happiness : {Happiness}");
+      Console.SetCursorPosition(startPos, 4);
+      Console.WriteLine("||" + new string(' ', pad) + $"Hunger : {Hunger}");
+      Console.SetCursorPosition(startPos, 5);
+      Console.WriteLine("||" + new string(' ', pad) + $"Addiction : {Addiction}");
+      Console.SetCursorPosition(startPos, 6);
+      Console.WriteLine("||" + new string(' ', pad) + $"Insanity : {Insanity}");
+      Console.SetCursorPosition(startPos, 7);
       
    }
 

@@ -102,7 +102,7 @@ public class Sexuality
    {
       if (LGBT == false)
       {
-         return $"Sexual Attraction: Straight";
+         return $"Straight";
       }
       
       switch (Gender)
@@ -110,102 +110,102 @@ public class Sexuality
          case >= 70:
             if (Lust >= 70 && LustySwing >= 70)
             {
-               return $"Sexual Attraction: Horny Lesbian ({Lust}% Lust)";
+               return $"Horny Lesbian ({Lust}% Lust)";
             } 
             else if (Lust >= 40 && LustySwing >= 70)
             {
-               return $"Sexual Attraction: Lesbian ({Lust}% Lust)";
+               return $"Lesbian ({Lust}% Lust)";
             }
             else if (Lust >= 70 && LustySwing <= 30)
             {
-               return $"Sexual Attraction: Horny Straight ({Lust}% Lust)";
+               return $"Horny Straight ({Lust}% Lust)";
             }
             else if (Lust >= 40 && LustySwing <= 30)
             {
-               return $"Sexual Attraction: Straight ({Lust}% Lust)";
+               return $"Straight ({Lust}% Lust)";
             }
             else if (Lust >= 70)
             {
-               return $"Sexual Attraction: Horny Bisexual ({Lust}% Lust)";
+               return $"Horny Bisexual ({Lust}% Lust)";
             }
             else if (Lust >= 40)
             {
-               return $"Sexual Attraction: Bisexual ({Lust}% Lust)";
+               return $"Bisexual ({Lust}% Lust)";
             }
             else if (Lust >= 20)
             { 
-               return $"Sexual Attraction: Grey-Asexual ({Lust}% Lust)";
+               return $"Grey-Asexual ({Lust}% Lust)";
             }
             else
             { 
-               return $"Sexual Attraction: Asexual ({Lust}% Lust)";
+               return $"Asexual ({Lust}% Lust)";
             }
          case <= 30:
             if (Lust >= 70 && LustySwing >= 70)
             {
-               return $"Sexual Attraction: Horny Straight ({Lust}% Lust)";
+               return $"Horny Straight ({Lust}% Lust)";
             } 
             else if (Lust >= 40 && LustySwing >= 70)
             {
-               return $"Sexual Attraction: Straight ({Lust}% Lust)";
+               return $"Straight ({Lust}% Lust)";
             }
             else if (Lust >= 70 && LustySwing <= 30)
             {
-               return $"Sexual Attraction: Horny Gay ({Lust}% Lust)";
+               return $"Horny Gay ({Lust}% Lust)";
             }
             else if (Lust >= 40 && LustySwing <= 30)
             {
-               return $"Sexual Attraction: Gay ({Lust}% Lust)";
+               return $"Gay ({Lust}% Lust)";
             }
             else if (Lust >= 70)
             {
-               return $"Sexual Attraction: Horny Bisexual ({Lust}% Lust)";
+               return $"Horny Bisexual ({Lust}% Lust)";
             }
             else if (Lust >= 40)
             {
-               return $"Sexual Attraction: Bisexual ({Lust}% Lust)";
+               return $"Bisexual ({Lust}% Lust)";
             }
             else if (Lust >= 20)
             { 
-               return $"Sexual Attraction: Grey-Asexual ({Lust}% Lust)";
+               return $"Grey-Asexual ({Lust}% Lust)";
             }
             else
             { 
-               return $"Sexual Attraction: Asexual ({Lust}% Lust)";
+               return $"Asexual ({Lust}% Lust)";
             }
          
          default:
             if (Lust >= 70 && LustySwing >= 70)
             {
-               return $"Sexual Attraction: Horny (for The Ladies) ({Lust}% Lust)";
+               return $"Horny (for The Ladies) ({Lust}% Lust)";
             } 
             else if (Lust >= 40 && LustySwing >= 70)
             {
-               return $"Sexual Attraction: The Ladies ({Lust}% Lust)";
+               return $"The Ladies ({Lust}% Lust)";
             }
             else if (Lust >= 70 && LustySwing <= 30)
             {
-               return $"Sexual Attraction: Horny (The Gentlemen) ({Lust}% Lust)";
+               return $"Horny (The Gentlemen) ({Lust}% Lust)";
             }
             else if (Lust >= 40 && LustySwing <= 30)
             {
-               return $"Sexual Attraction: The Gentlemen ({Lust}% Lust)";
+               return $"The Gentlemen ({Lust}% Lust)";
             }
             else if (Lust >= 70)
             {
-               return $"Sexual Attraction: Horny Bisexual ({Lust}% Lust)";
+               return $"Horny Bisexual ({Lust}% Lust)";
             }
             else if (Lust >= 40)
             {
-               return $"Sexual Attraction: Bisexual ({Lust}% Lust)";
+               return $"Bisexual ({Lust}% Lust)";
             }
             else if (Lust >= 20)
             { 
-               return $"Sexual Attraction: Grey-Asexual ({Lust}% Lust)";
+               return $"Grey-Asexual ({Lust}% Lust)";
             }
             else
             { 
-               return $"Sexual Attraction: Asexual ({Lust}% Lust)";
+               return $"Asexual ({Lust}% Lust)";
             }
          
          
@@ -216,7 +216,7 @@ public class Sexuality
    {
       if (LGBT == false)
       {
-         return $"Romantic Attraction: Opposite Gender";
+         return $"Opposite Gender";
       }
       
       switch (Love)
@@ -224,33 +224,33 @@ public class Sexuality
          case >= 70:
             if (LoveSwing >= 70)
             {
-               return $"Romantic Attraction: Horny Women Enjoyer";
+               return $"Horny Women Enjoyer";
             }
             else if (LoveSwing <= 30)
             {
-               return $"Romantic Attraction: Horny BoyKisser";
+               return $"Horny BoyKisser";
             }
             else
             {
-               return $"Romantic Attraction: Anything That Moves (and can consent)";
+               return $"Anything That Moves (and can consent)";
             }
          case >= 40:
             if (LoveSwing >= 70)
             {
-               return $"Romantic Attraction: Women Enjoyer";
+               return $"Women Enjoyer";
             }
             else if (LoveSwing <= 30)
             {
-               return $"Romantic Attraction: BoyKisser";
+               return $"BoyKisser";
             }
             else
             {
-               return $"Romantic Attraction: All of the Above";
+               return $"All of the Above";
             }
          case >= 20:
-            return $"Romantic Attraction: Grey-romantic ";
+            return $"Grey-romantic ";
          default:
-            return "Romantic Attraction: Aromantic";
+            return "Aromantic";
       }
    }
    

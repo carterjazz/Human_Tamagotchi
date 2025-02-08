@@ -38,7 +38,7 @@ public class Human
       GenderBinaryScale = _rng.Next(0, 10) * 10;
       HasLunchBox = false;
 
-      if (_rng.Next(0, 60) == 1)
+      if (_rng.Next(0, 20) == 1)
       {
          isLGBT = true;
       }
@@ -62,21 +62,23 @@ public class Human
       Inventory = new Inventory();
    }
 
-   public void DrawStats()
-   {
-      Console.Clear();
-      Console.WriteLine("-----------------  STATS  -------------------");
-      Console.WriteLine($"Name: {Name}");
-      Console.WriteLine($"Age: {Age}");
-      Console.WriteLine(Health.GetMentalState());
+   public void Draw(int pad)
+   {  
+      Console.WriteLine();
+      Console.WriteLine("||" + new string(' ', pad) + $"Name : {Name}");
+      Console.WriteLine("||" + new string(' ',pad) + $"Age : {Age}");
+      Console.WriteLine("||" + new string(' ', pad) + $"Balance : £{Money}");
+      Console.WriteLine("||" + new string(' ', pad) + Health.GetMentalState());
+      
+
       if (Age >= 16)
       {
-         Console.WriteLine(Sexuality.GetSexualAttraction());
-         Console.WriteLine(Sexuality.GetRomanticAttraction());
+         Console.WriteLine("||" + new string(' ', pad) + "Sexuality: " + Sexuality.GetSexualAttraction());
+         Console.WriteLine("||" + new string(' ', pad) + "Romance: " + Sexuality.GetRomanticAttraction());
       }
+      Console.WriteLine("||" + new string(' ', pad)+ Gender.GetGenderIdentity());
 
-      Console.WriteLine(Gender.GetGenderIdentity());
-     
+    
 
    }
 
@@ -84,10 +86,9 @@ public class Human
    {
       return Health;
    }
-   public void DrawHealth()
+   public void DrawHealth(int pad, int startPos)
    {
-      Console.Clear();
-      Health.Draw(Name);
+      Health.Draw(pad, startPos);
    }
    
    
@@ -112,10 +113,9 @@ public class Human
       HasLunchBox = hasLunchBox;
    }
 
-   public void DrawInventory()
+   public void DrawInventory(int pad, int startPos)
    {
-      Console.Clear();
-      Inventory.Draw();
+      Inventory.Draw(pad, startPos);
    }
 
 }
