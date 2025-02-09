@@ -5,20 +5,37 @@ using Human_Tamagotchi.Objects;
 
 Human human01 = new Human("Adam");
 human01.SetAgeTestTool(16);
-human01.AddFood(new Food("Bread", "Carb", 10, 15));
-human01.AddFood(new Food("Chocolate", "Sugar", 3, 20));
-human01.AddFood(new Food("Cherry", "FruitAndVeg", 50, 3));
-human01.AddFood(new Food("Milk", "Dairy", 10, 1));
-human01.AddFood(new Food("Pork Scratchings", "Fat", 1, 10));
-human01.AddFood(new Food("Bread", "Carb", 10, 15));
-human01.AddFood(new Food("Bread", "Carb", 10, 15));
-human01.AddFood(new Food("Bread", "Carb", 10, 15));
-human01.AddFood(new Food("Bread", "Carb", 10, 15));
-human01.AddFood(new Food("Bread", "Carb", 10, 15));
-human01.AddFood(new Food("Bread", "Carb", 10, 15));
-
+human01.setLunchBox(true);
+for (int i = 0; i < 25; i++)
+{
+    human01.AddFood(new Food("test", "test", 9999, 9999));
+}
 
 Display UI = new Display(human01);
-UI.Draw();
+
+int page = 1;
+int Maxpage = 3;
+
+
+UI.Draw(["-Stats-", "-Health-", $"-Inventory ({page}/{Maxpage})-"], page);
+while (true)
+{
+   
+    var inputKey = Console.ReadKey();
+    if (inputKey.Key == ConsoleKey.RightArrow && page < Maxpage)
+    {
+        page++;
+        UI.Draw(["-Stats-", "-Health-", $"-Inventory ({page}/{Maxpage})-"], page);
+    }
+    else if (inputKey.Key == ConsoleKey.LeftArrow && page > 1)
+    {
+        page--;
+        UI.Draw(["-Stats-", "-Health-", $"-Inventory ({page}/{Maxpage})-"], page);
+    }
+    
+   
+    
+}
+
 
 

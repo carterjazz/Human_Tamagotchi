@@ -113,9 +113,9 @@ public class Human
       HasLunchBox = hasLunchBox;
    }
 
-   public void DrawInventory(int pad, int startPos)
+   public void DrawInventory(int pad, int startPos, int page)
    {
-      Inventory.Draw(pad, startPos);
+      Inventory.Draw(pad, startPos, page);
    }
 
 }

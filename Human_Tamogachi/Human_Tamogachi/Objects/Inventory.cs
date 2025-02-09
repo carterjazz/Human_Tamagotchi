@@ -35,12 +35,28 @@ public class Inventory
       }
    }
 
-   public void Draw(int pad, int startPos)
+   public void Draw(int pad, int startPos, int page)
    {
-      for (int i = 0; i < FoodTop; i++)
+      int startItem = (page - 1) * 10;
+      
+      for (int i = 0; i < 10; i++, startItem++)
       {
          Console.SetCursorPosition(startPos, i + 2);
-         Console.WriteLine("||" + new string(' ' , pad) + $"Item#{i + 1} : {FoodInventory[i].Display()}");
+
+         try
+         { 
+            Console.WriteLine("||" + new string(' ' , pad) + $"ItemSlot({startItem + 1}) {FoodInventory[startItem].Display()}");
+         }
+         catch (Exception e)
+         {
+            Console.WriteLine(" ");
+         }
+         
+         
+         
+        
+       
+        
       }
    }
 

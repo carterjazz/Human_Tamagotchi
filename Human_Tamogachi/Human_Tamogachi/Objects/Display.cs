@@ -7,9 +7,8 @@ public class Display(Human entity)
     private Human Entity { get; set; } = entity;
     private const int GAP = 60;
     private const int PADDING = GAP / 2 + 1;
-    private string[] HEADERS = new string[] { "Stats", "Health", "Inventory" };
 
-    public void Draw()
+    public void Draw(string[] HEADERS, int page)
     {
         Console.Clear();
         Console.WriteLine("||" + new string('-' , GAP ) + "||" + new string('-' , GAP) + "||" + new string('-' , GAP) + "||");
@@ -20,7 +19,7 @@ public class Display(Human entity)
         }
         Entity.Draw(GAP / 20);
         Entity.DrawHealth(GAP / 20, GAP + 2);
-        Entity.DrawInventory(GAP /20, (2*GAP) + 4);
+        Entity.DrawInventory(GAP /20, (2*GAP) + 4, page);
         for (int i = 0; i <= 3; i++)
         {
             for (int j = 0; j <= 9; j++)
