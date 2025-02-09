@@ -40,17 +40,17 @@ public class Health
    
    public void Draw(int pad, int startPos)
    {
-      Console.SetCursorPosition(startPos, 2);
-      Console.WriteLine("||" + new string(' ', pad) + $"Health: {HealthPoints}");
-      Console.SetCursorPosition(startPos, 3);
-      Console.WriteLine("||" + new string(' ',pad) + $"Happiness : {Happiness}");
-      Console.SetCursorPosition(startPos, 4);
-      Console.WriteLine("||" + new string(' ', pad) + $"Hunger : {Hunger}");
-      Console.SetCursorPosition(startPos, 5);
-      Console.WriteLine("||" + new string(' ', pad) + $"Addiction : {Addiction}");
-      Console.SetCursorPosition(startPos, 6);
-      Console.WriteLine("||" + new string(' ', pad) + $"Insanity : {Insanity}");
-      Console.SetCursorPosition(startPos, 7);
+      Console.SetCursorPosition(startPos, 9);
+      Console.Write(new string(' ', pad) + $"Health: {HealthPoints}");
+      Console.SetCursorPosition(startPos, 10);
+      Console.Write(new string(' ',pad) + $"Happiness : {Happiness}");
+      Console.SetCursorPosition(startPos, 11);
+      Console.Write(new string(' ', pad) + $"Hunger : {Hunger}");
+      Console.SetCursorPosition(startPos, 12);
+      Console.Write(new string(' ', pad) + $"Addiction : {Addiction}");
+      Console.SetCursorPosition(startPos, 13);
+      Console.Write(new string(' ', pad) + $"Insanity : {Insanity}");
+      Console.SetCursorPosition(startPos, 14);
       
    }
 

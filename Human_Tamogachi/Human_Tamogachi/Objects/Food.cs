@@ -22,6 +22,10 @@ public class Food(string name, string type, int amount, int foodValue)
         
     }
 
+    public int ReturnAmount()
+    {
+        return Amount;
+    }
     public string Display()
     {
         return $"{Name} (Amt: {Amount}, Val: {FoodValue}, Typ: {Type})";

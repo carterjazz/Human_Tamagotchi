@@ -6,32 +6,38 @@ using Human_Tamagotchi.Objects;
 Human human01 = new Human("Adam");
 human01.SetAgeTestTool(16);
 human01.setLunchBox(true);
-for (int i = 0; i < 25; i++)
-{
-    human01.AddFood(new Food("test", "test", 9999, 9999));
-}
-
 Display UI = new Display(human01);
+
+human01.AddFood(new Food("Garlic Bread", "Carb", 5, 10));
+human01.AddFood(new Food("Banana", "Fruit", 3, 15));
+human01.AddFood(new Food("Pizza", "Fat", 1, 25));
 
 int page = 1;
 int Maxpage = 3;
 
+Console.ForegroundColor = ConsoleColor.Green;
 
-UI.Draw(["-Stats-", "-Health-", $"-Inventory ({page}/{Maxpage})-"], page);
+UI.FullDraw(["-STATS-     ", "-HEALTH-   ", $"-INVENTORY ({page}/{Maxpage})-"], page);
+
 while (true)
 {
    
-    var inputKey = Console.ReadKey();
-    if (inputKey.Key == ConsoleKey.RightArrow && page < Maxpage)
-    {
-        page++;
-        UI.Draw(["-Stats-", "-Health-", $"-Inventory ({page}/{Maxpage})-"], page);
-    }
-    else if (inputKey.Key == ConsoleKey.LeftArrow && page > 1)
-    {
-        page--;
-        UI.Draw(["-Stats-", "-Health-", $"-Inventory ({page}/{Maxpage})-"], page);
-    }
+   var inputKey = Console.ReadKey(true);
+   
+   if (inputKey.Key == ConsoleKey.RightArrow && page < Maxpage)
+   {
+       page++;
+       UI.DrawBody(["-STATS-     ", "-HEALTH-   ", $"-INVENTORY ({page}/{Maxpage})-"], page);
+   }
+   else if (inputKey.Key == ConsoleKey.LeftArrow && page > 1) 
+   {
+       page--;
+       UI.DrawBody(["-STATS-     ", "-HEALTH-   ", $"-INVENTORY ({page}/{Maxpage})-"], page);
+   }
+   else if (inputKey.Key == ConsoleKey.E)
+   {
+       human01.EatFood(["-STATS-     ", "-HEALTH-   ", $"-INVENTORY ({page}/{Maxpage})-"], page, UI);
+   }
     
    
     

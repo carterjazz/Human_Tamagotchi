@@ -118,6 +118,11 @@ public class Human
       Inventory.Draw(pad, startPos, page);
    }
 
+   public void EatFood(string[] headers, int page, Display UI)
+   {
+      Inventory.EatFood(this.GetHealth(), headers, page, UI);
+   }
+
 }
 
 
