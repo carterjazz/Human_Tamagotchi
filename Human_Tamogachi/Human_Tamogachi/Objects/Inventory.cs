@@ -6,17 +6,18 @@ public class Inventory
    private int FoodTop = 0;
    public void StoreFood(Food food, bool HasLunchBox)
    {
-      if (HasLunchBox)
+      (bool isTrue, int Pos) Stack = inInventory(food.Name);
+
+      if (Stack.isTrue)
+      {
+         FoodInventory[Stack.Pos].AddAmount(food.ReturnAmount());
+      }
+      else if (HasLunchBox)
       {
          if (FoodTop < FoodInventory.Length)
          {
             FoodInventory[FoodTop] = food;
-            Console.WriteLine($"{food.Name} added ({FoodTop + 1}/{FoodInventory.Length})");
             FoodTop++;
-         }
-         else
-         {
-            Console.WriteLine("Inventory is full");
          }
       }
       else
@@ -24,15 +25,23 @@ public class Inventory
          if (FoodTop < 10)
          { 
             FoodInventory[FoodTop] = food;
-            Console.WriteLine($"{food.Name} added ({FoodTop + 1}/10)");
             FoodTop++;
-         }
-         else
-         {
-            Console.WriteLine("Inventory is full");
          }
         
       }
+   }
+
+   private (bool, int) inInventory(string name)
+   {
+      for (int i = 0; i < FoodTop; i++)
+      {
+         if (FoodInventory[i].Name == name && FoodInventory[i].ReturnAmount() < 20)
+         {
+            return (true, i);
+         }
+      }
+      
+      return (false, 0);
    }
 
    public void Draw(int pad, int startPos, int page)
@@ -77,24 +86,17 @@ public class Inventory
                FoodInventory[i] = FoodInventory[i + 1];
      
                if (i + 2  == FoodTop)
-                    {
-                        FoodInventory[i + 1] = null;
-                        break;
-                    }
-               
-                       
-                       
-                   
-               
-               
-               
+               {
+                  FoodInventory[i + 1] = null;
+                  break;
+               }
                
             }
             
             if (pos == FoodTop - 1)
-                {
-                    FoodInventory[pos] = null;
-                }
+            {
+               FoodInventory[pos] = null;
+            }
 
             FoodTop--;
             
@@ -105,7 +107,7 @@ public class Inventory
       }
    }
 
-   private void FindEmptyFood()
+   private void RemoveEmptyFood()
    {
       for (int i = 0; i < FoodTop; i++)
       {
@@ -125,28 +127,36 @@ public class Inventory
       {
          
          Console.Clear();
+         
          for (int i = 0; i < FoodTop; i++)
          {
+            
             if (i == item)
             {
                Console.ForegroundColor = ConsoleColor.Black;
                Console.BackgroundColor = ConsoleColor.White;
-               Console.WriteLine(new String(' ', 60) + FoodInventory[i].Display() + new string(' ', 60));
+               Console.SetCursorPosition(60, i + 1);
+               Console.Write("{0,-55}",FoodInventory[i].Display());
             }
             else
             {
               
                Console.ResetColor();
                Console.ForegroundColor = ConsoleColor.Green;
-               Console.WriteLine(new String(' ', 60) + FoodInventory[i].Display() + new string(' ', 60));
+               Console.SetCursorPosition(60, i + 1);
+               Console.Write("{0,-55}", FoodInventory[i].Display());
                
             }
 
          }
          
+         
+         Console.ResetColor();
+         Console.ForegroundColor = ConsoleColor.Green;
+         
          var key = Console.ReadKey(true);
          
-         if (key.Key == ConsoleKey.DownArrow && item < FoodInventory.Length - 1)
+         if (key.Key == ConsoleKey.DownArrow && item < FoodTop - 1)
          {
             item++;
          }
@@ -156,12 +166,13 @@ public class Inventory
          }
          else if (key.Key == ConsoleKey.Enter)
          {
-                if (FoodInventory[item] != null)
-                {
-                    FoodInventory[item].Eat(health);
-                }
-                
-            break;
+            if (FoodInventory[item] != null)
+            {
+               FoodInventory[item].Eat(health);
+            }
+            
+            RemoveEmptyFood();
+            
          }
          else if (key.Key == ConsoleKey.Backspace)
          {
@@ -169,7 +180,6 @@ public class Inventory
          }
       }
       
-      FindEmptyFood();
       Console.ResetColor();
       Console.ForegroundColor = ConsoleColor.Green;
       UI.FullDraw(headers, page);

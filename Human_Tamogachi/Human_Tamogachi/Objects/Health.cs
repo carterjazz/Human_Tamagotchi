@@ -51,7 +51,6 @@ public class Health
       Console.SetCursorPosition(startPos, 13);
       Console.Write(new string(' ', pad) + $"Insanity : {Insanity}");
       Console.SetCursorPosition(startPos, 14);
-        Console.Write(new string(' ', pad) + $"Munch Meter: {MunchMeter}");
       
    }
 
@@ -111,7 +110,7 @@ public class Health
             break;
       }
 
-        Thread.Sleep(500);
+        Thread.Sleep(250);
    }
 
   

@@ -37,7 +37,7 @@ public class Display(Human entity)
     public void DrawMain()
     {
         Console.Clear();
-        Console.WriteLine("||" + new string('-', (3*GAP) + 4 ) + "||");
+        Console.WriteLine("||" + new string('=', (3*GAP) + 4 ) + "||");
         for (int i = 0; i <= 5; i++)
         {
             Console.SetCursorPosition(0, i + 1);
@@ -47,7 +47,7 @@ public class Display(Human entity)
         }
 
         Console.WriteLine();
-        Console.WriteLine("||" + new string('-' , GAP ) + "||" + new string('-' , GAP) + "||" + new string('-' , GAP) + "||");
+        Console.WriteLine("||" + new string('=' , GAP ) + "||" + new string('=' , GAP) + "||" + new string('=' , GAP) + "||");
         Console.WriteLine("||" + new string(' ' , GAP ) + "||" + new string(' ' , GAP) + "||" + new string(' ' , GAP) + "||");
  
         for (int i = 0; i <= 3; i++)
@@ -60,11 +60,11 @@ public class Display(Human entity)
             
         }
         Console.SetCursorPosition(0, 19);
-        Console.WriteLine("||" + new string('-' , GAP ) + "||" + new string('-' , GAP) + "||" + new string('-' , GAP) + "||");
+        Console.WriteLine("||" + new string('=' , GAP ) + "||" + new string('=' , GAP) + "||" + new string('=' , GAP) + "||");
         for (int i = 0; i <= 1; i++)
         {
             Console.WriteLine("||" + new string(' ', (3 * GAP) + (2 * 2)) + "||");
-            Console.WriteLine("||" + new string('-', (3 * GAP) + (2 * 2)) + "||");
+            Console.WriteLine("||" + new string('=', (3 * GAP) + (2 * 2)) + "||");
         }
         
     }
@@ -83,7 +83,7 @@ public class Display(Human entity)
         Entity.DrawInventory(GAP /20, (2*GAP) + 8, page);
         
         Console.SetCursorPosition(3, 20);
-        Console.Write("Eat (Shift + E)");
+        Console.Write("Eat (E) ||  Shop (S)");
         Console.SetCursorPosition(3,22);
     }
 }

@@ -9,7 +9,7 @@ public class Human
    private string EyeColour { get; set; }
    
    private int Age { get; set; }
-   private int Money { get; set; }
+   private float Money { get; set; }
    private int Radicalisation { get; set; }
    
    private int GenderMtFScale { get; set; }
@@ -67,7 +67,16 @@ public class Human
       Console.WriteLine();
       Console.WriteLine("||" + new string(' ', pad) + $"Name : {Name}");
       Console.WriteLine("||" + new string(' ',pad) + $"Age : {Age}");
-      Console.WriteLine("||" + new string(' ', pad) + $"Balance : £{Money}");
+      
+      if (Money == (int) Money)
+      {
+         Console.WriteLine("||" + new string(' ', pad) + $"Balance : {Money}");
+      }
+      else
+      { 
+         Console.WriteLine("||" + new string(' ', pad) + $"Balance : {MathF.Round(Money, 1)}0");
+      }
+
       Console.WriteLine("||" + new string(' ', pad) + Health.GetMentalState());
       
 
@@ -121,6 +130,17 @@ public class Human
    public void EatFood(string[] headers, int page, Display UI)
    {
       Inventory.EatFood(this.GetHealth(), headers, page, UI);
+   }
+
+   public void AddMoney(float amount)
+   {
+      Money += amount;
+      Money = (float) Math.Round(Money, 1);
+   }
+
+   public float GetMoney()
+   {
+      return Money;
    }
 
 }
