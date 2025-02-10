@@ -54,14 +54,6 @@ internal class Program
             {
                 foodShop.Shop(human01, ["-STATS-     ", "-HEALTH-   ", $"-INVENTORY ({page}/{Maxpage})-"], page, UI);
             }
-            else if (inputKey.Key == ConsoleKey.W)
-            {
-                Console.Clear();
-                Console.Write(human01.GetMoney());
-            }
-
-
-
         }
     }
 }
