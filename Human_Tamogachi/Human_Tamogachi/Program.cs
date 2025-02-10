@@ -3,7 +3,9 @@
 using Human_Tamagotchi;
 using Human_Tamagotchi.Objects;
 
-Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
+Console.SetWindowSize(Console.LargestWindowWidth - 52, Console.LargestWindowHeight - 20);
+Console.Title = "Human Tamagotchi";
+
 Human human01 = new Human("Adam");
 human01.SetAgeTestTool(0);
 human01.setLunchBox(true);
@@ -11,7 +13,7 @@ Display UI = new Display(human01);
 
 human01.AddFood(new Food("Garlic Bread", "Carb", 5, 10));
 human01.AddFood(new Food("Banana", "Fruit", 3, 15));
-for (int i = 0; i < 100; i++)
+for (int i = 0; i < 10; i++)
 {
     human01.AddFood(new Food("Pizza", "Fat", 1, 25));
 }
