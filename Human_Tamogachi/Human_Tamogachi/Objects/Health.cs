@@ -51,6 +51,7 @@ public class Health
       Console.SetCursorPosition(startPos, 13);
       Console.Write(new string(' ', pad) + $"Insanity : {Insanity}");
       Console.SetCursorPosition(startPos, 14);
+        Console.Write(new string(' ', pad) + $"Munch Meter: {MunchMeter}");
       
    }
 
@@ -73,14 +74,23 @@ public class Health
 
    public void Ate(int foodValue, string foodType)
    {
+      
+
       if (Hunger + foodValue <= 100)
       {
          Hunger += foodValue;
-      }
+         Console.Clear();
+         Console.SetCursorPosition(65, 2);
+         Console.Write($"You Ate and Regained {foodValue} Hunger.");
+
+        }
       else
       {
          Hunger = 100;
          MunchMeter++;
+         Console.Clear();
+         Console.SetCursorPosition(65, 2);
+         Console.Write($"You Overate.");
       }
 
       switch (foodType)
@@ -100,6 +110,8 @@ public class Health
          default:
             break;
       }
+
+        Thread.Sleep(500);
    }
 
   
