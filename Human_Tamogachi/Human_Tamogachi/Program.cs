@@ -3,14 +3,18 @@
 using Human_Tamagotchi;
 using Human_Tamagotchi.Objects;
 
+Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
 Human human01 = new Human("Adam");
-human01.SetAgeTestTool(16);
+human01.SetAgeTestTool(0);
 human01.setLunchBox(true);
 Display UI = new Display(human01);
 
 human01.AddFood(new Food("Garlic Bread", "Carb", 5, 10));
 human01.AddFood(new Food("Banana", "Fruit", 3, 15));
-human01.AddFood(new Food("Pizza", "Fat", 1, 25));
+for (int i = 0; i < 100; i++)
+{
+    human01.AddFood(new Food("Pizza", "Fat", 1, 25));
+}
 
 int page = 1;
 int Maxpage = 3;

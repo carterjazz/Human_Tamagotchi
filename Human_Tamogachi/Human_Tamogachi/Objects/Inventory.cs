@@ -47,18 +47,18 @@ public class Inventory
 
          try
          {
-            if (startItem + 1 < 10)
+            if (startItem + 1 < 10 && FoodInventory[startItem] != null)
             {
                
                Console.WriteLine(new string(' ' , pad) + $"Item ({startItem + 1}): {FoodInventory[startItem].Display()}");
             }
-            else
+            else if (FoodInventory[startItem] != null)
             {
                Console.WriteLine(new string(' ' , pad) + $"Item({startItem + 1}): {FoodInventory[startItem].Display()}"); 
             }
             
          }
-         catch (Exception e)
+         catch (Exception)
          {
             Console.WriteLine(new string(' ', 58));
          }
@@ -70,25 +70,34 @@ public class Inventory
    {
       switch (inventory)
       {
-         case "Food": 
-            if (FoodTop == 1)
-            {
-               FoodInventory[pos] = null;
-               FoodTop--;
-            }
+         case "Food":
             
             for (int i = pos; i < FoodTop - 1; i++)
             {
                FoodInventory[i] = FoodInventory[i + 1];
+     
+               if (i + 2  == FoodTop)
+                    {
+                        FoodInventory[i + 1] = null;
+                        break;
+                    }
                
-               if (i + 2 == FoodTop)
-               {
-                  FoodInventory[i + 1] = null;
-               }
+                       
+                       
+                   
+               
+               
+               
                
             }
             
+            if (pos == FoodTop - 1)
+                {
+                    FoodInventory[pos] = null;
+                }
+
             FoodTop--;
+            
             break;
          
          default:
@@ -147,7 +156,11 @@ public class Inventory
          }
          else if (key.Key == ConsoleKey.Enter)
          {
-            FoodInventory[item].Eat(health);
+                if (FoodInventory[item] != null)
+                {
+                    FoodInventory[item].Eat(health);
+                }
+                
             break;
          }
          else if (key.Key == ConsoleKey.Backspace)
