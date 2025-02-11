@@ -20,7 +20,7 @@ public class Shops
        Console.SetCursorPosition(20, 6);
        Console.Write("||" + new string('-', 90) + "||");
        Console.SetCursorPosition(20, 18);
-       Console.Write("||" + new string('a', 90) + "||");
+       Console.Write("||" + new string('=', 90) + "||");
        Console.SetCursorPosition(20, 20);
        Console.Write("||" + new string('=', 90) + "||");
        
