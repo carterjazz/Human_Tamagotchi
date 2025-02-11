@@ -13,7 +13,7 @@ public class Tests
         for (int i = 0; i < RANGE; i++)
         {
             TestCases[i] = new Human("NULL");
-            TestCases[i].SetAgeTestTool(18);
+            TestCases[i].SetAge(18);
         }
     }
 

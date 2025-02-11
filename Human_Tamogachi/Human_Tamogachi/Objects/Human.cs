@@ -24,6 +24,7 @@ public class Human
    private Gender Gender { get; set; }
    private Sexuality Sexuality { get; set; }
    private Inventory Inventory { get; set; }
+   private Time Time { get; set; }
 
    public Human(string name)
    {
@@ -60,6 +61,8 @@ public class Human
       Gender = new Gender(Sex, GenderBinaryScale , GenderMtFScale, isLGBT);
       Sexuality = new Sexuality(GenderMtFScale, isLGBT);
       Inventory = new Inventory();
+      Time = new Time(this);
+      
    }
 
    public void Draw(int pad)
@@ -82,10 +85,12 @@ public class Human
 
       if (Age >= 16)
       {
-         Console.WriteLine("||" + new string(' ', pad) + "Sexuality: " + Sexuality.GetSexualAttraction());
-         Console.WriteLine("||" + new string(' ', pad) + "Romance: " + Sexuality.GetRomanticAttraction());
+         Console.WriteLine("||" + new string(' ', pad) + "Sexuality: " + Sexuality.GetSexualAttraction() + new string(' ', 12));
+         Console.WriteLine("||" + new string(' ', pad) + "Romance: " + Sexuality.GetRomanticAttraction() + new string(' ', 12));
       }
-      Console.WriteLine("||" + new string(' ', pad)+ Gender.GetGenderIdentity());
+      Console.WriteLine("||" + new string(' ', pad)+ Gender.GetGenderIdentity() + new string(' ', 12));
+      Console.WriteLine("||" + new string(' ', pad) + "Birthday: " + Time.GetInitalDate() + new string(' ', 12));
+      Console.WriteLine("||" + new string(' ', pad) + "Current Date: " + Time.GetCurrentDate() + new string(' ', 12));
 
     
 
@@ -102,7 +107,7 @@ public class Human
    
    
 
-   public void SetAgeTestTool(int age)
+   public void SetAge(int age)
    {
       Age = age;
    }
@@ -141,6 +146,29 @@ public class Human
    public float GetMoney()
    {
       return Money;
+   }
+
+   public void IncreaseDay()
+   { 
+      Time.Increment();
+   }
+
+   public void IncreaseDay(int days)
+   {
+      for (int i = 0; i <= days; i++)
+      {
+         IncreaseDay();
+      }
+   }
+
+   public void IncreaseYear()
+   {
+      IncreaseDay(Time.DOBAfterLeapDay() ? Time.isNextLeapYear() ? 365 : 364 : Time.isLeapYear() ? 365 : 364);
+   }
+
+   public void IncrementAge()
+   {
+      Age++;
    }
 
 }

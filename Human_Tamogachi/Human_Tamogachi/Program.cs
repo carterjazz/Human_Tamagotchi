@@ -2,7 +2,7 @@
 
 using Human_Tamagotchi;
 using Human_Tamagotchi.Objects;
-
+using Microsoft.VisualBasic;
 
 
 internal class Program
@@ -17,7 +17,7 @@ internal class Program
         Human human01 = new Human("Adam");
         FoodShop foodShop = new FoodShop("Megastore");
 
-        human01.SetAgeTestTool(18);
+        human01.SetAge(0);
         human01.setLunchBox(true);
         human01.AddMoney(9999999f);
 
@@ -44,7 +44,7 @@ internal class Program
             else if (inputKey.Key == ConsoleKey.LeftArrow && page > 1) 
             {
                 page--;
-                UI.DrawBody(["-STATS-     ", "-HEALTH-   ", $"-INVENTORY ({page}/{Maxpage})-"], page);
+                
             }
             else if (inputKey.Key == ConsoleKey.E)
             {
@@ -54,14 +54,18 @@ internal class Program
             {
                 foodShop.Shop(human01, ["-STATS-     ", "-HEALTH-   ", $"-INVENTORY ({page}/{Maxpage})-"], page, UI);
             }
-            else if (inputKey.Key == ConsoleKey.W)
+            else if (inputKey.Key == ConsoleKey.Spacebar)
             {
-                Console.Clear();
-                Console.Write(human01.GetMoney());
+                human01.IncreaseDay();
+                UI.DrawBody(["-STATS-     ", "-HEALTH-   ", $"-INVENTORY ({page}/{Maxpage})-"], page); 
             }
-
-
-
+            else if (inputKey.Key == ConsoleKey.Y)
+            {
+                human01.IncreaseYear();
+                UI.DrawBody(["-STATS-     ", "-HEALTH-   ", $"-INVENTORY ({page}/{Maxpage})-"], page); 
+ 
+            }
+           
         }
     }
 }
