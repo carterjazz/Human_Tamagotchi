@@ -16,10 +16,13 @@ internal class Program
         
         Human human01 = new Human("Adam");
         FoodShop foodShop = new FoodShop("Megastore");
-
+        JobCenter jobCenter = new JobCenter([], "");
+        JobMenu jobMenu = new JobMenu([jobCenter]);
+        
         human01.SetAge(0);
         human01.setLunchBox(true);
         human01.AddMoney(9999999f);
+        human01.Setjob(new Job("test", "test", 0, 24, 999999));
 
         Display UI = new Display(human01);
 
@@ -44,7 +47,7 @@ internal class Program
             else if (inputKey.Key == ConsoleKey.LeftArrow && page > 1) 
             {
                 page--;
-                
+                UI.DrawBody(["-STATS-     ", "-HEALTH-   ", $"-INVENTORY ({page}/{Maxpage})-"], page);
             }
             else if (inputKey.Key == ConsoleKey.E)
             {
@@ -63,7 +66,10 @@ internal class Program
             {
                 human01.IncreaseYear();
                 UI.DrawBody(["-STATS-     ", "-HEALTH-   ", $"-INVENTORY ({page}/{Maxpage})-"], page); 
- 
+            }
+            else if (inputKey.Key == ConsoleKey.J)
+            {
+                jobMenu.JobsMenu(human01, ["-STATS-     ", "-HEALTH-   ", $"-INVENTORY ({page}/{Maxpage})-"], page, UI);
             }
            
         }

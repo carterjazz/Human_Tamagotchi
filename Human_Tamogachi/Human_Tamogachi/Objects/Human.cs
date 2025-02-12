@@ -25,6 +25,7 @@ public class Human
    private Sexuality Sexuality { get; set; }
    private Inventory Inventory { get; set; }
    private Time Time { get; set; }
+   private Job Job { get; set; }
 
    public Human(string name)
    {
@@ -62,7 +63,9 @@ public class Human
       Sexuality = new Sexuality(GenderMtFScale, isLGBT);
       Inventory = new Inventory();
       Time = new Time(this);
-      
+      Job = null;
+
+
    }
 
    public void Draw(int pad)
@@ -88,7 +91,7 @@ public class Human
          Console.WriteLine("||" + new string(' ', pad) + "Sexuality: " + Sexuality.GetSexualAttraction() + new string(' ', 12));
          Console.WriteLine("||" + new string(' ', pad) + "Romance: " + Sexuality.GetRomanticAttraction() + new string(' ', 12));
       }
-      Console.WriteLine("||" + new string(' ', pad)+ Gender.GetGenderIdentity() + new string(' ', 12));
+      Console.WriteLine("||" + new string(' ', pad)+ Gender.GetGenderIdentity() + new string(' ', 8));
       Console.WriteLine("||" + new string(' ', pad) + "Birthday: " + Time.GetInitalDate() + new string(' ', 12));
       Console.WriteLine("||" + new string(' ', pad) + "Current Date: " + Time.GetCurrentDate() + new string(' ', 12));
 
@@ -134,7 +137,7 @@ public class Human
 
    public void EatFood(string[] headers, int page, Display UI)
    {
-      Inventory.EatFood(this.GetHealth(), headers, page, UI);
+      Inventory.EatFood(GetHealth(), headers, page, UI);
    }
 
    public void AddMoney(float amount)
@@ -171,6 +174,20 @@ public class Human
       Age++;
    }
 
+   public void Setjob(Job job)
+   {
+      Job = job;
+   }
+
+   public Job Getjob()
+   {
+      return Job;
+   }
+
+   public bool hasJob()
+   {
+      return Job != null;
+   }
 }
 
 

@@ -6,7 +6,8 @@ public class Time
     private static (int Day, int Month, int Year) InitalDate { get; set; }
     private int[] CurrentDate = new int[3];
     private Human Entity { get; set; }
-
+    private Random _rng = new Random();
+    
     public Time(Human entity)
     {
          InitalDate = (Day: DateTime.Now.Day, Month: DateTime.Now.Month, Year: DateTime.Now.Year);
@@ -75,6 +76,8 @@ public class Time
         {
             Age();
         }
+        
+        Entity.GetHealth().AddHunger(-_rng.Next(0, 4) * 10);
 
     }
 

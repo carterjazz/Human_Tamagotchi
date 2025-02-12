@@ -1,6 +1,6 @@
 namespace Human_Tamagotchi.Objects;
 
-public class Inventory
+public class Inventory : Box
 {
    private Food[] FoodInventory = new Food[25];
    private int FoodTop = 0;
@@ -120,55 +120,80 @@ public class Inventory
 
    public void EatFood(Health health, string[] headers, int page, Display UI)
    {
-     
-      int item = 0;
-
+      
+      Console.Clear();
+      DrawBox();
+      
+      int Item = 0;
+      int Page = 0;
+      int MaxPages = FoodTop / 10;
+      
+      
       while (true)
       {
+         Console.SetCursorPosition(57, 3);
+         Console.Write("{0, 15}", $"Inventory ({Page}/{MaxPages})");
          
-         Console.Clear();
-         
-         for (int i = 0; i < FoodTop; i++)
-         {
-            
-            if (i == item)
-            {
-               Console.ForegroundColor = ConsoleColor.Black;
-               Console.BackgroundColor = ConsoleColor.White;
-               Console.SetCursorPosition(60, i + 1);
-               Console.Write("{0,-55}",FoodInventory[i].Display());
-            }
-            else
-            {
-              
-               Console.ResetColor();
-               Console.ForegroundColor = ConsoleColor.Green;
-               Console.SetCursorPosition(60, i + 1);
-               Console.Write("{0,-55}", FoodInventory[i].Display());
-               
-            }
-
-         }
-         
+         int pos = 6;
          
          Console.ResetColor();
          Console.ForegroundColor = ConsoleColor.Green;
          
+         for (int i = Page * 10; i <= Page * 10 + 10; i++, pos++)
+         {
+            if (i == Item && i < FoodTop)
+            {
+               Console.ForegroundColor = ConsoleColor.Black;
+               Console.BackgroundColor = ConsoleColor.White;
+               Console.SetCursorPosition(23, pos);
+               Console.Write("{0,-55}", FoodInventory[i].Display());
+               
+            }
+            else if (i >= FoodTop)
+            {
+               Console.ResetColor();
+               Console.ForegroundColor = ConsoleColor.Green;
+               Console.SetCursorPosition(23, pos);
+               Console.Write(new string(' ', 70));
+               
+            }
+            else
+            {
+               Console.ResetColor();
+               Console.ForegroundColor = ConsoleColor.Green;
+               Console.SetCursorPosition(23, pos);
+               Console.Write("{0,-55}", FoodInventory[i].Display());
+               
+                    
+            }
+                
+         }
+         
          var key = Console.ReadKey(true);
          
-         if (key.Key == ConsoleKey.DownArrow && item < FoodTop - 1)
+         if (key.Key == ConsoleKey.DownArrow && Item < FoodTop - 1)
          {
-            item++;
+            Item++;
          }
-         else if (key.Key == ConsoleKey.UpArrow && item > 0)
+         else if (key.Key == ConsoleKey.UpArrow && Item > 0)
          {
-            item--;
+            Item--;
+         }
+         else if (key.Key == ConsoleKey.RightArrow && Page < MaxPages)
+         {
+            Page++;
+            Item = Page * 10;
+         }
+         else if (key.Key == ConsoleKey.LeftArrow && Page > 0)
+         {
+            Page--;
+            Item = Page * 10;
          }
          else if (key.Key == ConsoleKey.Enter)
          {
-            if (FoodInventory[item] != null)
+            if (FoodInventory[Item] != null)
             {
-               FoodInventory[item].Eat(health);
+               FoodInventory[Item].Eat(health);
             }
             
             RemoveEmptyFood();

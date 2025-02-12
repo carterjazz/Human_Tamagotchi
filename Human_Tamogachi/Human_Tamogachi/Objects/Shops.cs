@@ -51,10 +51,7 @@ public class FoodShop : Shops
     private Food[] Items =
     [
         new Food("Pizza", "Fat", 20, 25), new Food("Banana", "FruitAndVeg", 50, 5), new Food("Bread", "Carb", 30, 10),
-        new Food("Chicken", "Protein", 10, 15), new Food("Haribo", "Sugar", 150, 1) , new Food("Sandwich", "Carb", 3, 10),
-        new Food("test", "test", 999, 999), new Food("test", "test", 999, 999), new Food("test", "test", 999, 999),
-        new Food("test", "test", 999, 999), new Food("test", "test", 999, 999), new Food("test", "test", 999, 999),
-        new Food("test", "test", 999, 999), new Food("test", "test", 999, 999), new Food("test", "test", 999, 999)
+        new Food("Chicken", "Protein", 10, 15)
     ];
     private int ItemsTop;
 
@@ -132,7 +129,7 @@ public class FoodShop : Shops
             
             for (int i = Page * 10; i <= Page * 10 + 10; i++, pos++)
             {
-                if (i == Item)
+                if (i == Item && i < ItemsTop)
                 {
                     Console.ForegroundColor = ConsoleColor.Black;
                     Console.BackgroundColor = ConsoleColor.White;

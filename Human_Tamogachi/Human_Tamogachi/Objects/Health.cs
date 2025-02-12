@@ -41,15 +41,15 @@ public class Health
    public void Draw(int pad, int startPos)
    {
       Console.SetCursorPosition(startPos, 9);
-      Console.Write(new string(' ', pad) + $"Health: {HealthPoints}");
+      Console.Write(new string(' ', pad) + $"Health: {HealthPoints}    ");
       Console.SetCursorPosition(startPos, 10);
-      Console.Write(new string(' ',pad) + $"Happiness : {Happiness}");
+      Console.Write(new string(' ',pad) + $"Happiness : {Happiness}    ");
       Console.SetCursorPosition(startPos, 11);
-      Console.Write(new string(' ', pad) + $"Hunger : {Hunger}");
+      Console.Write(new string(' ', pad) + $"Hunger : {Hunger}    ");
       Console.SetCursorPosition(startPos, 12);
-      Console.Write(new string(' ', pad) + $"Addiction : {Addiction}");
+      Console.Write(new string(' ', pad) + $"Addiction : {Addiction}    ");
       Console.SetCursorPosition(startPos, 13);
-      Console.Write(new string(' ', pad) + $"Insanity : {Insanity}");
+      Console.Write(new string(' ', pad) + $"Insanity : {Insanity}    ");
       Console.SetCursorPosition(startPos, 14);
       
    }
@@ -78,18 +78,12 @@ public class Health
       if (Hunger + foodValue <= 100)
       {
          Hunger += foodValue;
-         Console.Clear();
-         Console.SetCursorPosition(65, 2);
-         Console.Write($"You Ate and Regained {foodValue} Hunger.");
 
-        }
+      }
       else
       {
          Hunger = 100;
          MunchMeter++;
-         Console.Clear();
-         Console.SetCursorPosition(65, 2);
-         Console.Write($"You Overate.");
       }
 
       switch (foodType)
@@ -110,7 +104,24 @@ public class Health
             break;
       }
 
-        Thread.Sleep(250);
+   }
+
+   public void AddHunger(int hunger)
+   {
+      if (Hunger + hunger > 100)
+      {
+         Hunger = 100;
+         MunchMeter++;
+      }
+      else if (Hunger + hunger < 0)
+      {
+         Hunger = 0;
+         HealthPoints -= 10;
+      }
+      else
+      {
+         Hunger += hunger;
+      }
    }
 
   
