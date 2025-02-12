@@ -16,13 +16,17 @@ internal class Program
         
         Human human01 = new Human("Adam");
         FoodShop foodShop = new FoodShop("Megastore");
-        JobCenter jobCenter = new JobCenter([], "");
+        JobCenter jobCenter = new JobCenter([new Job("TEST", "TEST", 1,2,3)], "Center");
         JobMenu jobMenu = new JobMenu([jobCenter]);
         
         human01.SetAge(0);
         human01.setLunchBox(true);
         human01.AddMoney(9999999f);
-        human01.Setjob(new Job("test", "test", 0, 24, 999999));
+        for (int i = 0; i < 25; i++)
+        {
+            human01.AddFood(new Food("TEST", "TEST", 20, 10));
+        }
+        
 
         Display UI = new Display(human01);
 

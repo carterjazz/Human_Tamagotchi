@@ -2,48 +2,12 @@ using System.Globalization;
 
 namespace Human_Tamagotchi.Objects;
 
-public class Shops
+public class Shops : Box
 {
    protected string ShopName;
    protected float[] ShopPrices;
    protected int Page = 0;
-
-   protected void Draw()
-   {
-       Console.Clear();
-       Console.ForegroundColor = ConsoleColor.Green;
-       
-       Console.SetCursorPosition(20, 2);
-       Console.Write("||" + new string('=', 90) + "||");
-       Console.SetCursorPosition(20, 4);
-       Console.Write("||" + new string('=', 90) + "||");
-       Console.SetCursorPosition(20, 6);
-       Console.Write("||" + new string('-', 90) + "||");
-       Console.SetCursorPosition(20, 18);
-       Console.Write("||" + new string('=', 90) + "||");
-       Console.SetCursorPosition(20, 20);
-       Console.Write("||" + new string('=', 90) + "||");
-       
-       for (int i = 2; i < 21; i++)
-       {
-           Console.SetCursorPosition(20, i);
-           Console.Write("||");
-           Console.SetCursorPosition(112, i);
-           Console.Write("||");
-
-           if (i > 3)
-           {
-               Console.SetCursorPosition(80, i);
-               Console.Write("||");
-           }
-           
-       }
-       
-       Console.SetCursorPosition(57, 3);
-       Console.Write("{0, 15}", ShopName);
-   }
-
-  
+   
 }
 
 public class FoodShop : Shops
@@ -98,7 +62,7 @@ public class FoodShop : Shops
     public void Shop(Human Entity, string[] headers, int page, Display UI)
     {
         
-        Draw();
+        DrawTable(ShopName);
         
         int Item = 0;
         int MaxPages = Items.Length / 10;
@@ -195,7 +159,7 @@ public class FoodShop : Shops
                     Console.SetCursorPosition(65, 5);
                     Console.Write($"You Spent {ShopPrices[Item]} on {Items[Item].Name}.");
                     Thread.Sleep(250);
-                    Draw();
+                    DrawTable(ShopName);
                 }
                 else
                 {
@@ -203,7 +167,7 @@ public class FoodShop : Shops
                     Console.SetCursorPosition(55, 5);
                     Console.Write("Insufficient Funds.");
                     Thread.Sleep(250);
-                    Draw();
+                    DrawTable(ShopName);
                 }
             } 
             else if (Key.Key == ConsoleKey.Backspace)

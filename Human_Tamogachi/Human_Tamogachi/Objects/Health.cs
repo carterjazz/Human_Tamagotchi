@@ -71,6 +71,11 @@ public class Health
       }
    }
 
+
+   public int GetHunger()
+   {
+      return Hunger;
+   }
    public void Ate(int foodValue, string foodType)
    {
       

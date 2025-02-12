@@ -128,11 +128,14 @@ public class Inventory : Box
       int Page = 0;
       int MaxPages = FoodTop / 10;
       
-      
+      Console.SetCursorPosition(23, 19);
+      Console.Write("Select Item (\u2190/ \u2192) || Select Page (\u2191/\u2193)");
       while (true)
       {
-         Console.SetCursorPosition(57, 3);
-         Console.Write("{0, 15}", $"Inventory ({Page}/{MaxPages})");
+         Console.SetCursorPosition(98, 19);
+         Console.Write($"Hunger : {health.GetHunger()}");
+         Console.SetCursorPosition(59, 3);
+         Console.Write("{0, 15}", $"Inventory ({Page + 1}/{MaxPages + 1})");
          
          int pos = 6;
          
@@ -168,6 +171,8 @@ public class Inventory : Box
             }
                 
          }
+
+         Console.SetCursorPosition(0, 0);
          
          var key = Console.ReadKey(true);
          
