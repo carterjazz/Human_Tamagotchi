@@ -83,7 +83,7 @@ public class Display(Human entity)
         Entity.DrawInventory(GAP /20, (2*GAP) + 8, page);
         
         Console.SetCursorPosition(3, 20);
-        Console.Write("Eat (E) ||  Shop (S) || Sleep ( \u2423 ) || ADD YEAR (Y) [Debug]");
+        Console.Write("Eat (E) ||  Shop (S) || Sleep ( Space ) || ADD YEAR (Y) [Debug]");
         Console.SetCursorPosition(168,20);
         Console.Write("Select Page (\u2190/\u2192)");
         Console.SetCursorPosition(3,22);

@@ -26,8 +26,10 @@ public class Box
             Console.SetCursorPosition(112, i);
             Console.Write("||");
         }
-    
-            
+
+        Console.ResetColor();
+        Console.ForegroundColor = ConsoleColor.Green;
+
     }
 
     protected void DrawTable(string Title)

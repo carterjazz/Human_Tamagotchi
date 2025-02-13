@@ -91,7 +91,7 @@ public class Human
          Console.WriteLine("||" + new string(' ', pad) + "Sexuality: " + Sexuality.GetSexualAttraction() + new string(' ', 12));
          Console.WriteLine("||" + new string(' ', pad) + "Romance: " + Sexuality.GetRomanticAttraction() + new string(' ', 12));
       }
-      Console.WriteLine("||" + new string(' ', pad)+ Gender.GetGenderIdentity() + new string(' ', 8));
+      //Console.WriteLine("||" + new string(' ', pad)+ Gender.GetGenderIdentity() + new string(' ', 8));
       Console.WriteLine("||" + new string(' ', pad) + "Birthday: " + Time.GetInitalDate() + new string(' ', 12));
       Console.WriteLine("||" + new string(' ', pad) + "Current Date: " + Time.GetCurrentDate() + new string(' ', 12));
 

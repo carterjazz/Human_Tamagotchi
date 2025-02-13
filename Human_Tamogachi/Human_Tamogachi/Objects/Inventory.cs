@@ -129,7 +129,7 @@ public class Inventory : Box
       int MaxPages = FoodTop / 10;
       
       Console.SetCursorPosition(23, 19);
-      Console.Write("Select Item (\u2190/ \u2192) || Select Page (\u2191/\u2193)");
+      Console.Write("Select Item (\u2191/ \u2193) || Select Page (\u2190/\u2192)");
       while (true)
       {
          Console.SetCursorPosition(98, 19);

@@ -80,7 +80,7 @@ public class JobMenu(JobCenter[] centers) : Box
         else
         {
             DrawBox();
-            Console.SetCursorPosition(58, 3);
+            Console.SetCursorPosition(61, 3);
             Console.WriteLine("UNEMPLOYED");
             
             while (true)
@@ -144,8 +144,65 @@ public class JobMenu(JobCenter[] centers) : Box
     {
         int selectedItem = 0;
         DrawTable("JOB CENTERS");
+        Console.SetCursorPosition(23, 5);
+        Console.Write("Center Name");
+        Console.SetCursorPosition(83, 5);
+        Console.Write("Availible Jobs");
+        Console.SetCursorPosition(23, 19);
+        Console.Write("Select Center(\u2191/\u2193) || Select Page(\u2190/\u2192)");
         
-        while (true) {}
+        while (true)
+        {
+            int pos = 7;
+
+            for (int i = 0; i < JobCenters.Length; i++, pos++)
+            {
+                if (i == selectedItem)
+                {
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(23, pos);
+                    Console.Write("{0, -15}", JobCenters[i].ReturnName());
+                    Console.SetCursorPosition(83, pos);
+                    Console.Write("{0,-3}", JobCenters[i].ReturnAmtJobs());
+                }
+                else
+                {
+                    Console.ResetColor();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.SetCursorPosition(23, pos);
+                    Console.Write("{0, -15}", JobCenters[i].ReturnName());
+                    Console.SetCursorPosition(83, pos);
+                    Console.Write("{0,-3}", JobCenters[i].ReturnAmtJobs());
+                }
+
+            }
+
+            Console.SetCursorPosition(0, 0);
+
+            var Key = Console.ReadKey(true);
+
+            if (Key.Key == ConsoleKey.DownArrow && selectedItem < JobCenters.Length - 1)
+            {
+                selectedItem++;
+            }
+            else if (Key.Key == ConsoleKey.UpArrow && selectedItem > 0)
+            {
+                selectedItem--;
+            }
+            else if (Key.Key == ConsoleKey.Enter)
+            {
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Green;
+                JobCenters[selectedItem].DrawCenter(entity, headers, page, UI);
+                break;
+            } 
+            else if (Key.Key == ConsoleKey.Backspace)
+            {
+
+                break;
+            }
+        }
     }
 }
 
@@ -153,6 +210,7 @@ public class JobCenter(Job[] avaliableJobs, string name) : Box
 {
     private Job[] AvaliableJobs = avaliableJobs;
     private string CenterName = name;
+    int ItemsTop = avaliableJobs.Length;
 
     
 
@@ -161,14 +219,12 @@ public class JobCenter(Job[] avaliableJobs, string name) : Box
         DrawBox();
         
         int Item = 0;
-        int ItemsTop = AvaliableJobs.Length;
         
         int Page = 0;
         int MaxPages = AvaliableJobs.Length / 10;
         
         Console.SetCursorPosition(57, 3);
         Console.Write("{0, 15}", CenterName);
-        Console.Clear();
         
         while (true) {
             
@@ -176,12 +232,12 @@ public class JobCenter(Job[] avaliableJobs, string name) : Box
             
             for (int i = Page * 10; i <= Page * 10 + 10; i++, pos++)
             {
-                if (i == Item)
+                if (i == Item && i < ItemsTop)
                 {
                     Console.ForegroundColor = ConsoleColor.Black;
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.SetCursorPosition(26, pos);
-                    Console.Write("{0,-55}", AvaliableJobs[i].PrintData());
+                    Console.Write("{0,-80}", AvaliableJobs[i].PrintData());
 
                 }
                 else if (i >= ItemsTop)
@@ -189,14 +245,14 @@ public class JobCenter(Job[] avaliableJobs, string name) : Box
                     Console.ResetColor();
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.SetCursorPosition(26, pos);
-                    Console.Write(new string(' ', 55));
+                    Console.Write(new string(' ', 80));
                 }
                 else
                 {
                     Console.ResetColor();
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.SetCursorPosition(26, pos);
-                    Console.Write("{0,-55}", AvaliableJobs[i].PrintData());
+                    Console.Write("{0,-80}", AvaliableJobs[i].PrintData());
                 }
 
             }
@@ -226,6 +282,7 @@ public class JobCenter(Job[] avaliableJobs, string name) : Box
             else if (Key.Key == ConsoleKey.Enter)
             {
                 entity.Setjob(AvaliableJobs[Item]);
+                RemoveJob(Item);
             }
             else if (Key.Key == ConsoleKey.Backspace)
             {
@@ -240,6 +297,37 @@ public class JobCenter(Job[] avaliableJobs, string name) : Box
         UI.FullDraw(headers, page);
     }
 
+    public string ReturnName()
+    {
+        return CenterName;
+    }
+
+    public int ReturnAmtJobs()
+    {
+        return ItemsTop;
+    }
+
+    private void RemoveJob(int pos) { 
+    
+        for (int i = pos; i < ItemsTop - 1; i++)
+        {
+            AvaliableJobs[i] = AvaliableJobs[i + 1];
+
+            if (i + 2 == ItemsTop)
+            {
+                AvaliableJobs[i + 1] = null;
+                break;
+            }
+
+        }
+
+        if (pos == ItemsTop - 1)
+        {
+            AvaliableJobs[pos] = null;
+        }
+
+        ItemsTop--;
+    }
 }
 
 
@@ -265,6 +353,6 @@ public class Job
 
     public string PrintData()
     {
-        return $"{Name}, {Description} || Hours: {Hours.Start}:00 - {Hours.Finish}:00 || Salary: {Salary}";
+        return $"{Name}, {Description} || Hours: {Hours.Start}:00 - {Hours.Finish}:00 || Weekly Salary: {Salary}";
     }
 }
